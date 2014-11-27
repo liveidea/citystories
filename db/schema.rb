@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141123143213) do
+ActiveRecord::Schema.define(version: 20141127204612) do
 
   create_table "stories", force: true do |t|
     t.string   "title"
@@ -20,6 +20,14 @@ ActiveRecord::Schema.define(version: 20141123143213) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "stories_users", id: false, force: true do |t|
+    t.integer "user_id",  null: false
+    t.integer "story_id", null: false
+  end
+
+  add_index "stories_users", ["story_id", "user_id"], name: "index_stories_users_on_story_id_and_user_id", unique: true, using: :btree
+  add_index "stories_users", ["user_id", "story_id"], name: "index_stories_users_on_user_id_and_story_id", unique: true, using: :btree
 
   create_table "story_updates", force: true do |t|
     t.text     "description"
