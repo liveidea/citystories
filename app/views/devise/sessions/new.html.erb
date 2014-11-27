@@ -1,18 +1,11 @@
-<<<<<<< HEAD
-<div class="center-block">
-<div class="col-md-6">
-<div class="panel panel-default">
-  
-  <div class="panel-body">
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: "form",:class=>"center-block" }) do |f| %>
-=======
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h4><%= t('.sign_in', :default => "Sign in") %></h4>
-  </div>
-  <div class="panel-body">
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: "form" }) do |f| %>
->>>>>>> 1d0a9ddcf9183ac145e285324661fbe34b793fd4
+<div class="center-block login_form">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4><%= t('.sign_in', :default => "Sign in") %></h4>
+    </div>
+    <div class="panel-body">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: "form" }) do |f| %>
+
       <div class="form-group">
         <%= f.label :email %>
         <%= f.email_field :email, autofocus: true, class: "form-control" %>
@@ -21,22 +14,16 @@
         <%= f.label :password %>
         <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
       </div>
-      <% if devise_mapping.rememberable? %>
+        <% if devise_mapping.rememberable? %>
         <div class="checkbox">
           <label>
             <%= f.check_box :remember_me %>
             <%= f.label :remember_me %>
         </div>
         <% end %>
-      <%= f.submit  t('.sign_in', :default => "Sign in"), class: "btn btn-primary" %>
-    <% end %>
+        <%= f.submit  t('.sign_in', :default => "Sign in"), class: "btn btn-primary" %>
+      <% end %>
+    </div>
   </div>
 </div>
-<<<<<<< HEAD
-
 <%= render "devise/shared/links" %>
-</div>
-</div>
-=======
-<%= render "devise/shared/links" %>
->>>>>>> 1d0a9ddcf9183ac145e285324661fbe34b793fd4
