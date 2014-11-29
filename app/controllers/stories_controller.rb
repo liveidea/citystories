@@ -22,6 +22,8 @@ class StoriesController < ApplicationController
       redirect_to @story
     else
       render action: "new"
+    end
+  end
 
   private
 

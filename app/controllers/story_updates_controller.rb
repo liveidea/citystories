@@ -12,7 +12,7 @@ class StoryUpdatesController < ApplicationController
     @story = Story.find_by_id(params[:story_id])
     @story_update = @story.story_updates.create(story_update_params)
     if @story_update.save
-      redirect_to story_story_updates_path
+      redirect_to story_path(@story.id)
     else
       render action: "new"
     end
@@ -21,6 +21,6 @@ class StoryUpdatesController < ApplicationController
   private
 
   def story_update_params
-    params.require(:story_update).permit(:description,:story_id)
+    params.require(:story_update).permit(:description,:story_id, :photo, :photo_cache)
   end
 end
