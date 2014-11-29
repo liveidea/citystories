@@ -1,0 +1,6 @@
+<h1>Stories</h1>
+<% @stories.each do |story| %>
+  <p> <h4>Title</h4> <%= story.title %></p>
+  <p> <h4>Adress</h4> <%= story.adress %></p>
+  <%= link_to "Show", story_path(story) %>
+<%end%>

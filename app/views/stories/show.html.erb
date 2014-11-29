@@ -1,0 +1,13 @@
+<h1> Show </h1>
+<h4>Title</h4>
+<p>
+  <%= @story.title %>
+</p>
+<h4> Address</h4>
+<p>
+  <%= @story.adress %>
+</p>
+<% @story.story_updates.each do |update| %>
+  <h3> Description </h3>
+  <p>  <%= update.description %> </p>
+<%end%>
