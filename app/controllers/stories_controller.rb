@@ -1,5 +1,6 @@
 class StoriesController < ApplicationController
 
+
   def show
     @story = Story.find_by_id(params[:id])
   end
@@ -8,18 +9,23 @@ class StoriesController < ApplicationController
     @stories = Story.all
   end
 
+  def new
+    @story = Story.new
+
+  end
+
+
+
   def create
     @story = Story.new(story_params)
     if @story.save
-      redirect_to @story, notice: 'story was successfully created.'
+      redirect_to @story
     else
-      render action: 'new'
-    end
-  end
+      render action: "new"
 
   private
 
   def story_params
-    params.require(:story).permit(:title, :adress)
+    params.require(:story).permit(:title,:adress)
   end
 end
