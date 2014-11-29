@@ -8,7 +8,7 @@
   <%= @story.adress %>
 </p>
 <% @story.story_updates.each do |update| %>
-<%= image_tag update.photo_url if update.photo?%>
+<%= image_tag update.photo_url (:thumb) if update.photo?%>
   <h3> Description </h3>
   <p>  <%= update.description %> </p>
 <%end%>

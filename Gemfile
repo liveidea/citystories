@@ -34,7 +34,7 @@ gem 'bootstrap-sass'
 
 gem 'devise-bootstrap-views', '~> 0.0.3'
 
-
+gem "mini_magick"
 
 gem 'carrierwave'
 
