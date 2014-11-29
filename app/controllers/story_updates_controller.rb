@@ -4,7 +4,7 @@ class StoryUpdatesController < ApplicationController
   end
 
   def new
-    @story = Story.find_by_id(params[:id])
+    #@story = Story.find_by_id(params[:id])
     @story_update = StoryUpdate.new
   end
 
@@ -12,7 +12,7 @@ class StoryUpdatesController < ApplicationController
     @story = Story.find_by_id(params[:story_id])
     @story_update = @story.story_updates.create(story_update_params)
     if @story_update.save
-      redirect_to story_story_updates_path
+      redirect_to story_path(@story.id)
     else
       render action: "new"
     end
