@@ -1,5 +1,14 @@
-<%= form_for([@story,@story_update], url: story_story_updates_path) do |f|%>
+
+<%= form_for([@story,@story_update], url: story_story_updates_path, :html => {:multipart => true}) do |f|%>
   <%= f.label :description %>
   <%= f.text_area :description %>
+  <label></label>
+    <%= image_tag(@story_update.photo_url) if @story_update.photo? %>
+    <%= f.file_field :photo %>
+    <%= f.hidden_field :photo_cache %>
   <%= f.submit "create"%>
+
+
+
 <%end%>
+

@@ -21,6 +21,6 @@ class StoryUpdatesController < ApplicationController
   private
 
   def story_update_params
-    params.require(:story_update).permit(:description,:story_id)
+    params.require(:story_update).permit(:description,:story_id, :photo, :photo_cache)
   end
 end

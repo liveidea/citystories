@@ -35,6 +35,9 @@ gem 'bootstrap-sass'
 gem 'devise-bootstrap-views', '~> 0.0.3'
 
 
+
+gem 'carrierwave'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
