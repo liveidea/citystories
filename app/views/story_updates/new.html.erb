@@ -1,5 +1,6 @@
 <h4>Update your story</h4>
 <%= form_for([@story,@story_update], url: story_story_updates_path, :html => {:multipart => true, :class=>"form-horizontal"}) do |f|%>
+  <%= render 'error_messages'%>
   <div class="form-group">
     <%= f.label :description, :class=> "col-sm-2 control-label" %>
     <div class="col-sm-6">
