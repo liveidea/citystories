@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     end
     resources :story_updates
   end
+  resources :story_updates
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
