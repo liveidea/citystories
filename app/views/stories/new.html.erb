@@ -1,19 +1,28 @@
-<h1>New Story</h1>
-<%= form_for @story do |f| %>
-   <%= render 'error_messages'%>
-   <%= f.label :title %>
 
-    <div class="form-inputs">
-      <%= f.text_field :title %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h2 class="text-center">New Story</h2>
+    <%= form_for @story do |f| %>
+      <%= render 'error_messages'%>
+      <em><%= f.label :title %>:</em>
+
+    <div class="form-group">
+      <%= f.text_field :title, class:"form-control", placeholder:"Enter title" %>
     </div>
 
-    <%= f.label :adress %>
+    <em><%= f.label :adress %>:</em>
      <div class="form-inputs">
-      <%= f.text_field :adress %>
+      <%= f.text_field :adress, class:"form-control", placeholder:"Enter adress" %>
     </div>
 
-<div class="form-submit">
-    <%= f.button :submit %>
+  <p>
+    <div class="form-submit">
+    <%= f.button :submit, class: "btn btn-primary btn-sm active "%>
   </div>
+  </p>
 
 <%end%>
+  </div>
+</div>
+
+
