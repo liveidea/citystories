@@ -1,4 +1,6 @@
 <h1> Show </h1>
+<%= link_to "follow", follow_story_story_path, method: :post %>
+<%= link_to "unfollow",  unfollow_story_story_path, method: :delete %>
 <%= link_to "add update", new_story_story_update_path(@story.id) %>
 <h4>Title</h4>
 <p>
