@@ -5,8 +5,8 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
 
-  root 'welcome#index'
-  resources :stories do 
+  root 'stories#index'
+  resources :stories do
     resources :story_updates
   end
   # Example of regular route:
