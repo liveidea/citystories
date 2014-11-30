@@ -3,4 +3,5 @@ class Story < ActiveRecord::Base
   	association_foreign_key: "user_id"
   has_many :story_updates
   belongs_to :user
+  validates :title, :adress, presence: true
 end
