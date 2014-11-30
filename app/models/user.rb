@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :followed_stories, class_name: "Story",
   	association_foreign_key: "story_id"
   has_many :stories
+  validates :email, :nickname, presence: true
 end
