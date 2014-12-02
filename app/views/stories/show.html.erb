@@ -1,3 +1,17 @@
+<%= javascript_include_tag "http://api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU" %>
+
+
+<%= javascript_tag do %>
+  window.storyTitle = '<%= j @story.title %>';
+  window.storyAddress ='<%= j @story.adress %>'
+<% end %>
+
+
+<%= javascript_include_tag "mapshow" %>
+  
+
+
+
 <h1> Show </h1>
 <%= link_to "follow", follow_story_story_path, method: :post %>
 <%= link_to "unfollow",  unfollow_story_story_path, method: :delete %>
@@ -15,3 +29,9 @@
   <h3> Description </h3>
   <p>  <%= update.description %> </p>
 <%end%>
+<div class="col-md-10 col-md-offset-1"> 
+  <div id="YMapsID">
+
+  </div>
+  <br>
+</div>

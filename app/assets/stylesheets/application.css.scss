@@ -21,3 +21,18 @@
 .login_form {
 	width: 570px;
 }
+#coord_form{
+    position: absolute;
+    z-index: 1000;
+    background: none repeat scroll 0% 0% rgb(255, 255, 255);
+    list-style: none outside none;
+    padding: 10px;
+    margin: 0px;
+    right: 10px;
+    top: 50px; 
+}
+#YMapsID{
+  margin-bottom: 20px;
+  padding: 0;
+  height: 500px;
+}
