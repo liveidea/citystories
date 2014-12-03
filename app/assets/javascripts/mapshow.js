@@ -16,7 +16,14 @@ ready = function() {
                 zoom: 16,
                 behaviors: ["scrollZoom"]
             });
-            
+            var SearchControl = new ymaps.control.SearchControl({noPlacemark:true});  
+ 
+      //Добавляем элементы управления на карту
+       myMap.controls
+        .add(SearchControl)                
+                .add('zoomControl')                
+                .add('typeSelector')                 
+                .add('mapTools');
             myPlacemark = new ymaps.Placemark(firstGeoObject.geometry.getCoordinates(), { 
             hintContent: storyTitle
              

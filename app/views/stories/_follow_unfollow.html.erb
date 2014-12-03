@@ -1,0 +1,5 @@
+<%-if current_user.followed_stories.exists?(@story)%>
+  <%= link_to "Unfollow",  unfollow_story_story_path, method: :delete,:class=>"btn btn-default btn-lg" %>
+<%else%>
+  <%= link_to "Follow", follow_story_story_path, method: :post, :class=>"btn btn-primary btn-lg" %>
+<%end%>

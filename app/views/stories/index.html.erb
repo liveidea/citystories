@@ -1,7 +1,10 @@
 <h1>Stories</h1>
+<span class="glyphicon glyphicon-star">
 <%= link_to "add story", new_story_path %>
+</span>
+<a class="btn btn-large" href="#"><i class="icon-star"></i> Star</a>
 <% @stories.each do |story| %>
-  <p> <h4>Title</h4> <%= story.title %></p>
+  <p> <i class="glyphicon glyphicon-star"><h4>Title</h4></i> <%= story.title %></p>
   <p> <h4>Adress</h4> <%= story.adress %></p>
   <%= link_to "Show", story_path(story) %>
 <%end%>

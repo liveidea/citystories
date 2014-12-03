@@ -1,37 +1,44 @@
 <%= javascript_include_tag "http://api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU" %>
-
-
 <%= javascript_tag do %>
   window.storyTitle = '<%= j @story.title %>';
   window.storyAddress ='<%= j @story.adress %>'
 <% end %>
-
-
 <%= javascript_include_tag "mapshow" %>
-  
-
-
-
-<h1> Show </h1>
-<%= link_to "follow", follow_story_story_path, method: :post %>
-<%= link_to "unfollow",  unfollow_story_story_path, method: :delete %>
-<%= link_to "add update", new_story_story_update_path(@story.id) %>
-<h4>Title</h4>
-<p>
-  <%= @story.title %>
-</p>
-<h4> Address</h4>
-<p>
-  <%= @story.adress %>
-</p>
-<% @story.story_updates.each do |update| %>
-  <%= image_tag update.photo_url (:thumb) if update.photo?%>
-  <h3> Description </h3>
-  <p>  <%= update.description %> </p>
-<%end%>
-<div class="col-md-10 col-md-offset-1"> 
-  <div id="YMapsID">
-
+<div class="row well">
+  <div class="col-md-6">
+    <h1> <%= @story.title %> </h1>
   </div>
-  <br>
+  <div class="col-md-6">
+    <div class="pull-right">
+      <h4> Created by <span class="glyphicon glyphicon-user"></span>
+        <%= @story.user.nickname %> 
+      </h4>
+      <p> The number of people watching this: <%= @story.followers.count %>
+      </p>
+    </div>
+  </div>
+</div>
+<div class="col-md-3 col-md-offset-9">
+  <%= render "follow_unfollow" if user_signed_in? %>
+  <%= link_to "Add update", new_story_story_update_path(@story.id),class: "btn btn-success btn-lg" if @story.user == current_user %>
+</div>
+<div class="row">
+  <div class="col-md-7">
+    <% @story.story_updates.reverse.each do |update| %>
+      <div class="thumbnail">
+        <h4>
+          Was added <%= time_ago_in_words(update.created_at)%> ago
+        </h4>
+        <%= image_tag update.photo_url (:thumb) if update.photo?%>
+        <div class="thumbnail well">    
+          <p><strong><%= update.description %></strong></p>
+        </div>
+      </div>
+    <%end%>
+  </div>
+  <div class="col-md-5 thumbnail">    
+    <div id="YMapsID">
+    </div>
+    <p><%= @story.adress %></p>     
+  </div>
 </div>
