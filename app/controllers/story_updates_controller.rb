@@ -1,10 +1,11 @@
 class StoryUpdatesController < ApplicationController
   before_action :set_story_update, only: [:edit, :update, :destroy]
-  before_action :authenticate_user!, except[:index]
+  before_action :authenticate_user!, except:[:index]
 
   def index
     @story_updates = StoryUpdate.all.order(created_at: :desc)
-    @stories = Story.all.order(created_at: :desc)
+    @top_stories = Story.order(followers_count: :desc).limit(3)
+    @latest_stories = Story.order(created_at: :desc).limit(3)
   end
 
   def new

@@ -22,10 +22,18 @@
   </div>
   <%end%>
   </div>
-  <div class="col-md-5">
-    <h3>Stories list</h3>
+  <div class="col-md-4 col-md-offset-1">
+    <h3>Top stories list</h3>
     <ul class="nav">
-      <% @stories.each do |story| %>
+      <% @top_stories.each do |story| %>
+        <li><%= link_to story.title, story_path(story) %></li>
+      <%end%>
+    </ul>
+  </div>
+  <div class="col-md-4 col-md-offset-1">
+    <h3>Latest stories list</h3>
+    <ul class="nav">
+      <% @latest_stories.each do |story| %>
         <li><%= link_to story.title, story_path(story) %></li>
       <%end%>
     </ul>

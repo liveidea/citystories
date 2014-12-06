@@ -1,5 +1,5 @@
 class StoriesController < ApplicationController
-  before_action :authenticate_user!, except:[:index]
+  before_action :authenticate_user!, except:[:index,:show]
 
   def show
     @story = Story.find_by_id(params[:id])
@@ -14,16 +14,22 @@ class StoriesController < ApplicationController
   end
 
   def follow_story
-    if current_user.followed_stories.exists? (Story.find_by_id(params[:id]))
+    @story = Story.find_by_id(params[:id])
+    if current_user.followed_stories.exists? (@story)
       redirect_to :back, notice: "You already follow this story" 
     else
-      current_user.followed_stories << (Story.find_by_id(params[:id]))
+      current_user.followed_stories << (@story)
+      @story.followers_count += 1
+      @story.save
       redirect_to :back, notice: "Success" 
     end
   end
 
   def unfollow_story
-    current_user.followed_stories.destroy(Story.find_by_id(params[:id]))
+    @story = Story.find_by_id(params[:id])
+    current_user.followed_stories.destroy(@story)
+    @story.followers_count -= 1
+    @story.save
     redirect_to :back, notice: "You unfollow this story" 
   end
 
