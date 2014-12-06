@@ -1,6 +1,7 @@
 class StoryUpdatesController < ApplicationController
   def index
-    @story_updates = StoryUpdate.all.order(created_at: :desc)
+    #@story_updates = StoryUpdate.all.order(created_at: :desc)
+    @story_updates = StoryUpdate.all.order(created_at: :desc).page(params[:page]).per(2)
     @stories = Story.all.order(created_at: :desc)
   end
 

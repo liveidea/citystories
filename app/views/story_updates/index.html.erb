@@ -1,26 +1,12 @@
 <div class="row">
   <div class="col-md-7">
   <h3>Feed from all updates</h3>
-  <% @story_updates.each do |st_upd| %>
-  <div class="thumbnail">
-    <div class="row">
-      <div class="col-md-6">
-        <h4>Title: <%= link_to st_upd.story.title, story_path(st_upd.story) %></h4>
-      </div>
-      <div class="col-md-6">
-        <h4 class="pull-right"> Address: <%= st_upd.story.adress %></h4>
+    <div id="story_updates">
+      <div class="page">
+        <%= render @story_updates %>
       </div>
     </div>
-    <div class="well">
-      <%= st_upd.description %>
-    </div>
-    <%= image_tag st_upd.photo_url(:thumb) %>
-    <br>
-    <p>
-      Added <%= time_ago_in_words(st_upd.created_at) %> ago
-    </p>
-  </div>
-  <%end%>
+    <%= paginate @story_updates %>
   </div>
   <div class="col-md-5">
     <h3>Stories list</h3>
