@@ -1,0 +1,32 @@
+<%= javascript_include_tag "http://api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU" %>
+<%= javascript_include_tag "yandexmap" %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h2 class="text-center">New Story</h2>
+    <%= form_for @story do |f| %>
+      <%= render 'error_messages'%>
+      <em><%= f.label :title %>:</em>
+
+    <div class="form-group">
+      <%= f.text_field :title, class:"form-control", placeholder:"Enter title" %>
+    </div>
+
+    <em><%= f.label :adress %>:</em>
+     <div class="form-inputs">
+      <%= f.text_field :adress, class:"form-control", placeholder:"Enter adress", id:"address" %>
+    </div>
+
+  <p>
+    <div class="form-submit">
+    <%= f.button :submit, class: "btn btn-primary btn-sm active "%>
+  </div>
+  </p>
+
+<%end%>
+  </div>
+  <div class="col-md-10 col-md-offset-1"> 
+    <div id="YMapsID">
+    </div>
+  
+  </div>
+</div>
