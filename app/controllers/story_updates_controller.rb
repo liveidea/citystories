@@ -1,11 +1,13 @@
 class StoryUpdatesController < ApplicationController
+  before_action :set_story_update, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, except[:index]
+
   def index
     @story_updates = StoryUpdate.all.order(created_at: :desc)
     @stories = Story.all.order(created_at: :desc)
   end
 
   def new
-    #@story = Story.find_by_id(params[:id])
     @story_update = StoryUpdate.new
   end
 
@@ -19,7 +21,27 @@ class StoryUpdatesController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @story_update.update(story_update_params)
+      redirect_to @story_update.story, notice: "StoryUpdate successfully updated"
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @story_update.destroy
+    redirect_to :back, notice: "StoryUpdate deleted"
+  end
+
   private
+
+  def set_story_update
+    @story_update = StoryUpdate.find_by_id(params[:id])
+  end
 
   def story_update_params
     params.require(:story_update).permit(:description,:story_id, :photo, :photo_cache)
