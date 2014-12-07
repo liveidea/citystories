@@ -1,0 +1,11 @@
+uk:
+  story_updates:
+    feed_from_all_updates: "Лента усіх оновленнь"
+  navigation:
+    home: "Домівка"
+    stories: "Історії"
+    feed: "Моя лента"
+    sign_out: "Вийти"
+    edit_account: "Редагувати профіль"
+    sign_in: "Увійти"
+    sign_up: "Зареєструватися" 

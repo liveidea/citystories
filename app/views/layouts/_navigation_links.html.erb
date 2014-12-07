@@ -1,13 +1,15 @@
 <%# add navigation links to this file %>
-<li><%= link_to 'Stories', stories_path %></li>
-<li><%= link_to 'Story Updates', story_updates_path %></li>
+<li><%= link_to t('navigation.stories'), stories_path %></li>
 <% if user_signed_in? %>
-  <li><%= link_to 'Edit account', edit_user_registration_path %></li>
-  <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
+  <li><%= link_to t('navigation.feed'), profile_path %></li>
+  <li><%= link_to t('navigation.sign_out'), destroy_user_session_path, :method=>'delete' %></li>
+  <li><%= link_to t('navigation.edit_account'), edit_user_registration_path %></li>
 <% else %>
-  <li><%= link_to 'Sign in', new_user_session_path %></li>
-  <li><%= link_to 'Sign up', new_user_registration_path %></li>
+  <li><%= link_to t('navigation.sign_in'), new_user_session_path %></li>
+  <li><%= link_to t('navigation.sign_up'), new_user_registration_path %></li>
 <% end %>
-<% if user_signed_in? %>
-  <li><%= link_to 'Users', "#" %></li>
-<% end %>
+<% if params[:locale] == "uk"%>
+  <li><%= link_to "Switch to EN",{locale: :en}, class: "btn btn-default"%></li>
+<% else %>
+  <li><%= link_to "Switch to UK",{locale: :uk}, class: "btn btn-default"%></li>
+<%end%>

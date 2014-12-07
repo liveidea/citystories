@@ -1,20 +1,25 @@
 Rails.application.routes.draw do
-  devise_for :users
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  scope "/:locale" do
+    devise_for :users
+    # The priority is based upon order of creation: first created -> highest priority.
+    # See how all your routes lay out with "rake routes".
 
-  # You can have the root of your site routed with "root"
+    # You can have the root of your site routed with "root"
 
-  root 'stories#index'
+    root 'story_updates#index'
 
-  resources :stories do 
-    member do
-      post 'follow_story'
-      delete 'unfollow_story'
+    resources :stories do 
+      member do
+        post 'follow_story'
+        delete 'unfollow_story'
+      end
+      resources :story_updates
     end
-    resources :story_updates
+    
+    resources :story_updates 
+    
+    get 'profile', to: 'story_updates#profile'
   end
-  resources :story_updates
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
