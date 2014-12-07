@@ -24,19 +24,14 @@
 </div>
 <div class="row">
   <div class="col-md-7">
-    <% @story.story_updates.reverse.each do |update| %>
-      <div class="thumbnail">
-        <h4>
-          Was added <%= time_ago_in_words(update.created_at)%> ago
-        </h4>
-        <%= image_tag update.photo_url (:thumb) if update.photo?%>
-        <div class="thumbnail well">    
-          <p><strong><%= update.description %></strong></p>
-        </div>
-        <%= link_to "Edit", edit_story_update_path(update),class:"btn btn-primary btn-xs" if current_user == update.story.user %>
-        <%= link_to "Delete", update, method: :delete, data: { confirm: 'Are you sure?' },class:"btn btn-danger btn-xs" if current_user == update.story.user %>
-      </div>
+    <div id="story_updates">
+      <div class="page">
+    <% @story_upd.each do |update| %>
+      <%= render "story_upd", update: update%>
     <%end%>
+      </div>
+    </div>
+    <%= paginate @story_upd %>
   </div>
   <div class="col-md-5 thumbnail">    
     <div id="YMapsID">

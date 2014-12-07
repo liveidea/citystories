@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-md-2">
+    <%= link_to "Add story", new_story_path, :class=>"btn btn-success" %>
+    
+  </div>
+  <div class="col-md-7">
+  <h3> My Feed</h3>
+    <div id="story_updates">
+      <div class="page">
+        <%= render @feed %>
+      </div>
+    </div>
+    <%= paginate @feed %>
+  </div>
+  <div class="col-md-3">
+    <h3>Stories what I track</h3>
+    <ul class="nav nav-pills nav-stacked">
+      <li class="<%= 'active' unless params[:story_id]%>"> 
+        <%= link_to "All", profile_path %>
+      </li>
+      <% @tracked_stories.each do |story| %>
+        <li class="<%=story.id.to_s == params[:story_id] ? 'active' : ''%>">
+          <%= link_to story.title, profile_path(story_id:story.id) %>
+        </li>
+      <%end%>
+    </ul>
+    
+  </div>
+<div>
