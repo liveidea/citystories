@@ -6,7 +6,7 @@ class StoriesController < ApplicationController
   end
 
   def index
-    @stories = Story.all
+    @stories = Story.all.page(params[:page]).per(6)
   end
 
   def new
@@ -16,12 +16,12 @@ class StoriesController < ApplicationController
   def follow_story
     @story = Story.find_by_id(params[:id])
     if current_user.followed_stories.exists? (@story)
-      redirect_to :back, notice: "You already follow this story" 
+      redirect_to :back, notice: "You already follow this story"
     else
       current_user.followed_stories << (@story)
       @story.followers_count += 1
       @story.save
-      redirect_to :back, notice: "Success" 
+      redirect_to :back, notice: "Success"
     end
   end
 
@@ -30,7 +30,7 @@ class StoriesController < ApplicationController
     current_user.followed_stories.destroy(@story)
     @story.followers_count -= 1
     @story.save
-    redirect_to :back, notice: "You unfollow this story" 
+    redirect_to :back, notice: "You unfollow this story"
   end
 
   def edit
@@ -40,7 +40,7 @@ class StoriesController < ApplicationController
   def destroy
     @story = Story.find_by_id(params[:id])
     @story.destroy
-    redirect_to stories_path, notice: "Story successfully deleted" 
+    redirect_to stories_path, notice: "Story successfully deleted"
   end
 
   def update

@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: dnksd7lak
+  api_key: '151556298978787'
+  api_secret: CcgydzPAGqGC-Bt0zGMLe3izUwI
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: dnksd7lak
+  api_key: '151556298978787'
+  api_secret: CcgydzPAGqGC-Bt0zGMLe3izUwI
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: dnksd7lak
+  api_key: '151556298978787'
+  api_secret: CcgydzPAGqGC-Bt0zGMLe3izUwI
+  enhance_image_tag: true
+  static_image_support: false
