@@ -1,0 +1,11 @@
+<div class="thumbnail story_update">
+  <h4>
+    Was added <%= time_ago_in_words(update.created_at)%> ago
+  </h4>
+  <%= image_tag update.photo_url (:thumb) if update.photo?%>
+  <div class="thumbnail well">    
+    <p><strong><%= update.description %></strong></p>
+  </div>
+    <%= link_to "Edit", edit_story_update_path(update),class:"btn btn-primary btn-xs" if current_user == update.story.user %>
+    <%= link_to "Delete", update, method: :delete, data: { confirm: 'Are you sure?' },class:"btn btn-danger btn-xs" if current_user == update.story.user %>
+</div>

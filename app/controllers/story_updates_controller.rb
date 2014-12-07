@@ -2,10 +2,17 @@ class StoryUpdatesController < ApplicationController
   before_action :set_story_update, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, except:[:index]
 
+  def profile
+    @story = Story.find_by_id(params[:story_id]) 
+    @feed = @story ? @story.story_updates.order(created_at: :desc).page(params[:page]).per(2) : StoryUpdate.where(story_id: current_user.followed_story_ids)
+      .order(created_at: :desc).page(params[:page]).per(2)
+    @tracked_stories = current_user.followed_stories
+  end
+
   def index
     @story_updates = StoryUpdate.all.order(created_at: :desc).page(params[:page]).per(2)
-    @top_stories = Story.order(followers_count: :desc).limit(3)
-    @latest_stories = Story.order(created_at: :desc).limit(3)
+    @top_stories = Story.order(followers_count: :desc).limit(10)
+    @latest_stories = Story.order(created_at: :desc).limit(10)
   end
 
   def new

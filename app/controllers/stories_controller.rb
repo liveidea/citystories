@@ -3,6 +3,7 @@ class StoriesController < ApplicationController
 
   def show
     @story = Story.find_by_id(params[:id])
+    @story_upd = Kaminari.paginate_array(@story.story_updates.reverse).page(params[:page]).per(2)
   end
 
   def index
@@ -55,6 +56,7 @@ class StoriesController < ApplicationController
   def create
     @story = current_user.stories.build(story_params)
     if @story.save
+      current_user.followed_stories << (@story)
       redirect_to @story
     else
       render action: "new"
