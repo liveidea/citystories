@@ -1,14 +1,28 @@
 <h1>Stories</h1>
-<span class="glyphicon glyphicon-star">
-<%= link_to "add story", new_story_path %>
-</span>
-<a class="btn btn-large" href="#"><i class="icon-star"></i> Star</a>
-<% @stories.each do |story| %>
-  <p> <i class="glyphicon glyphicon-star"><h4>Title</h4></i> <%= story.title %></p>
-  <p> <h4>Adress</h4> <%= story.adress %></p>
-  <%= link_to "Show", story_path(story) %>
-  <%= link_to "Edit", edit_story_path(story) if current_user == story.user %>
-  <%= link_to "Destroy", story, method: :delete, data: { confirm: 'Are you sure?' } if current_user == story.user %>
-<%end%>
-<br>
-<h1>END</h1>
+
+<div class="row">
+  <div class="col-md-2">
+    <%= link_to "add story", new_story_path, class:"btn btn-default btn-md active" %>
+  </div>
+
+<div class="col-md-10">
+<ul class="nav">
+  <% @stories.each do |story| %>
+  <li class="col-md-4">
+    <div class="thumbnail">
+      <p> <h4><%= story.title %></h4> </p>
+      <p><small> <%= story.adress %></small></p>
+      <p> <%= image_tag (story.story_updates.last.photo_url(:small))%> </p>
+
+        <%= link_to "Show", story_path(story), :class=>"btn btn-info" %>
+        <%= link_to "Edit", edit_story_path(story),:class=>"btn btn-warning" if current_user == story.user %>
+        <%= link_to "Destroy", story, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"btn btn-danger" if current_user == story.user %>
+
+    </div>
+</li>
+  <%end%>
+</ul>
+</div>
+ <%= paginate @stories %>
+</div>
+
