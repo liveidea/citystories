@@ -15,4 +15,5 @@
 /log/*.log
 /tmp
 config/database.yml
+config/cloudinary.yml
 /public
