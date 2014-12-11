@@ -40,6 +40,8 @@ gem 'carrierwave'
 
 gem 'kaminari'
 
+gem 'bootstrap-kaminari-views'
+
 gem 'cloudinary'
 
 # Use ActiveModel has_secure_password
