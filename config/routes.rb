@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
     # You can have the root of your site routed with "root"
 
-    root 'story_updates#index'
+    #root 'story_updates#index'
 
     resources :stories do 
       member do
@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     
     get 'profile', to: 'story_updates#profile'
   end
+  root 'story_updates#index'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
