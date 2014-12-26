@@ -8,9 +8,9 @@
     </div>
     <%= paginate @story_updates %>
   </div>
-  <div class="col-md-4 col-md-offset-1">
+ <div class="col-md-4 col-md-offset-1">
     <h3>Top stories list</h3>
-    <ul class="nav">
+    <ul class="ul">
       <% @top_stories.each do |story| %>
         <li><%= link_to story.title, story_path(story) %></li>
       <%end%>
@@ -18,7 +18,7 @@
   </div>
   <div class="col-md-4 col-md-offset-1">
     <h3>Latest stories list</h3>
-    <ul class="nav">
+    <ul class="ul">
       <% @latest_stories.each do |story| %>
         <li><%= link_to story.title, story_path(story) %></li>
       <%end%>
