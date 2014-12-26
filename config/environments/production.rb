@@ -1,6 +1,18 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+# ActionMailer Config
+# Setup for production - deliveries, no errors raised
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default :charset => "utf-8"
+  config.action_mailer.smtp_settings = {
+  :address   => "smtp.mandrillapp.com",
+  :port      => 587,
+  :user_name => "arfelio1980@gmail.com",
+  :password  => "CV2XeibDxIK6coskK9fC0A"
+  }
   # Code is not reloaded between requests.
   config.cache_classes = true
 

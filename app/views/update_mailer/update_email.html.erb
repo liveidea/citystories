@@ -1,0 +1,8 @@
+<h1>hello</h1>
+<%= @user.nickname %>
+
+<p>development</p>
+<p>You have updates in this stories</p>
+<% @stories.each do |story|%>
+<p><%= story.title %></p>
+<%end%>
