@@ -1,6 +1,8 @@
 uk:
   story_updates:
     feed_from_all_updates: "Лента усіх оновленнь"
+    top_stories: "Найкращі історії"
+    latest_stories: "Останні історії"
   navigation:
     home: "Домівка"
     stories: "Історії"

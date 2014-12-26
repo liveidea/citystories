@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="col-md-2">
-    <%= link_to "add story", new_story_path, class:"btn btn-default btn-md active" %>
+    <%= link_to "add story", new_story_path, class:"btn btn-default btn-md active" if current_user%>
   </div>
 
 <div class="col-md-10">
@@ -12,16 +12,16 @@
     <div class="thumbnail">
       <p> <h4><%= story.title %></h4> </p>
       <p><small> <%= story.adress %></small></p>
-      <p> <%= image_tag (story.story_updates.last.photo_url(:small))%> </p>
+      <p> <%= image_tag (story.story_updates.last.photo_url(:small)) if story.story_updates.any? ==true %> </p>
 
         <%= link_to "Show", story_path(story), :class=>"btn btn-info" %>
         <%= link_to "Edit", edit_story_path(story),:class=>"btn btn-warning" if current_user == story.user %>
         <%= link_to "Destroy", story, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"btn btn-danger" if current_user == story.user %>
-
     </div>
-</li>
+  </li>
   <%end%>
 </ul>
+  <%= paginate @stories %> 
 </div>
-    <%= paginate @stories%>
+  
 </div>

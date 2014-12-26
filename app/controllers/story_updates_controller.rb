@@ -5,12 +5,12 @@ class StoryUpdatesController < ApplicationController
   def profile
     @story = Story.find_by_id(params[:story_id]) 
     @feed = @story ? @story.story_updates.order(created_at: :desc).page(params[:page]).per(2) : StoryUpdate.where(story_id: current_user.followed_story_ids)
-      .order(created_at: :desc).page(params[:page]).per(2)
+      .order(created_at: :desc).page(params[:page]).per(5)
     @tracked_stories = current_user.followed_stories
   end
 
   def index
-    @story_updates = StoryUpdate.all.order(created_at: :desc).page(params[:page]).per(2)
+    @story_updates = StoryUpdate.all.order(created_at: :desc).page(params[:page]).per(5)
     @top_stories = Story.order(followers_count: :desc).limit(10)
     @latest_stories = Story.order(created_at: :desc).limit(10)
   end

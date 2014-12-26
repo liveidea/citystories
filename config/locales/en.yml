@@ -20,4 +20,15 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  story_updates:
+    feed_from_all_updates: "Feed from all updates"
+    top_stories: "Top stories"
+    latest_stories: "Latest stories"
+  navigation:
+    home: "Home"
+    stories: "Stories"
+    feed: "Feed"
+    sign_out: "Sign out"
+    edit_account: "Edit account"
+    sign_in: "Sign in"
+    sign_up: "Sign up"

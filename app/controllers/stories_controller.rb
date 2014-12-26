@@ -3,7 +3,7 @@ class StoriesController < ApplicationController
 
   def show
     @story = Story.find_by_id(params[:id])
-    @story_upd = Kaminari.paginate_array(@story.story_updates.reverse).page(params[:page]).per(2)
+    @story_upd = Kaminari.paginate_array(@story.story_updates.reverse).page(params[:page]).per(5)
   end
 
   def index
